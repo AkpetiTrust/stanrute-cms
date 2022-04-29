@@ -52,14 +52,7 @@
 }
 
 .container form div input {
-  all: unset;
-  padding: 2px 15px;
-  background-color: #f7f7f7;
-  border: 1px solid #808080;
   width: 100%;
-  border-radius: 5px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 .container form button {
