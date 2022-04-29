@@ -2,3 +2,12 @@
   max-width: 800px;
   margin: 80px auto;
 }
+
+.instruction {
+  text-align: center;
+  margin-top: 20px;
+  &.active {
+    text-align: left;
+    margin-top: 50px;
+  }
+}

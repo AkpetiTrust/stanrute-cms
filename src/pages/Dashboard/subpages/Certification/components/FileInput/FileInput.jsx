@@ -1,10 +1,26 @@
 import React from "react";
 import style from "./index.module.css";
 
-function FileInput() {
+function FileInput({ onClick }) {
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    const fileInput = e.currentTarget.nextElementSibling;
+    fileInput.files = files;
+  };
+
   return (
     <div className={style.file_input}>
-      <label htmlFor="file-input">
+      <label
+        htmlFor="file-input"
+        onDragOver={handleDragOver}
+        onDragEnter={handleDragOver}
+        onDrop={handleDrop}
+      >
         <svg
           width="130"
           height="130"
@@ -23,7 +39,7 @@ function FileInput() {
         </svg>
         <p>Drag and drop from Google Docs drive</p>
         <p>or</p>
-        <p>Paste link</p>
+        <p onClick={onClick}>Paste link</p>
       </label>
       <input type="file" name="file-input" id="file-input" />
     </div>

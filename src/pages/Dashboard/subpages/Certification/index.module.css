@@ -2,4 +2,14 @@
   max-width: 800px;
   margin: 80px auto;
 }
+
+.instruction {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.instruction.active {
+  text-align: left;
+  margin-top: 50px;
+}
 /*# sourceMappingURL=index.module.css.map */

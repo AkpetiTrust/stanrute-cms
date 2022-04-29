@@ -1,2 +1,3 @@
 import FileInput from "./FileInput/FileInput";
-export { FileInput };
+import LinkInput from "./LinkInput/LinkInput";
+export { FileInput, LinkInput };

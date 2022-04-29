@@ -1,0 +1,33 @@
+.form {
+  margin-top: 30px;
+}
+
+.form label {
+  color: #626262;
+}
+
+.form fieldset {
+  all: unset;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.form fieldset input {
+  margin-right: 20px;
+  width: 250px;
+}
+
+.form button {
+  all: unset;
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 30px;
+  background-color: #009153;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*# sourceMappingURL=index.module.css.map */

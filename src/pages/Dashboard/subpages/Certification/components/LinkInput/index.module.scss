@@ -1,0 +1,26 @@
+.form {
+  margin-top: 30px;
+  label {
+    color: #626262;
+  }
+  fieldset {
+    all: unset;
+    display: flex;
+    input {
+      margin-right: 20px;
+      width: 250px;
+    }
+  }
+  button {
+    all: unset;
+    cursor: pointer;
+    display: inline-block;
+    padding: 8px 30px;
+    background-color: #009153;
+    color: #fff;
+    border-radius: 5px;
+    // width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
