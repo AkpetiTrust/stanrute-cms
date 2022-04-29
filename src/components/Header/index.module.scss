@@ -1,0 +1,11 @@
+.header {
+  background-color: #f8fffc;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+  height: 90px;
+  .image_container {
+    width: 170px;
+  }
+  img {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,15 @@
+.header {
+  background-color: #f8fffc;
+  -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+          box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+  height: 90px;
+}
+
+.header .image_container {
+  width: 170px;
+}
+
+.header img {
+  max-width: 100%;
+}
+/*# sourceMappingURL=index.module.css.map */
