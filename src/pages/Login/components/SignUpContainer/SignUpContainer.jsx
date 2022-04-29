@@ -4,8 +4,7 @@ import Button from "../Button/Button";
 import SignUp from "../SignUp/SignUp";
 import SignIn from "../SignIn/SignIn";
 
-function SignUpContainer() {
-  const [activeTab, setActiveTab] = useState("signup");
+function SignUpContainer({ activeTab, setActiveTab }) {
   return (
     <div
       className={`${style.container} ${activeTab === "signin" && style.active}`}
