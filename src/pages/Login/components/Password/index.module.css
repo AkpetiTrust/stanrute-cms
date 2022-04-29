@@ -1,0 +1,15 @@
+.password {
+  margin: 0;
+  position: relative;
+}
+
+.toggle {
+  position: absolute;
+  width: 15px;
+  top: 50%;
+  display: inline-block;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 10px;
+}
+/*# sourceMappingURL=index.module.css.map */

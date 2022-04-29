@@ -1,0 +1,19 @@
+.btn {
+  all: unset;
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 15px;
+  border: 1px solid #009153;
+  background-color: #e5fff4;
+  color: #009153;
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+}
+
+.btn.active {
+  border: none;
+  background-color: #009153;
+  color: #fff;
+}
+/*# sourceMappingURL=index.module.css.map */

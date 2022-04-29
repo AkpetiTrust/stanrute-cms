@@ -1,0 +1,62 @@
+.container {
+  --padding: 70px;
+  max-width: 450px;
+  padding: 30px var(--padding);
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 5px auto;
+  overflow: hidden;
+
+  .btn_container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  &.active .inner {
+    transform: translateX(calc(-100% - var(--padding)));
+  }
+
+  .inner {
+    position: relative;
+    height: 310px;
+    width: 100%;
+    transform: translateX(0);
+    transition: transform 0.2s;
+  }
+
+  form {
+    font-size: 0.9em;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    &:nth-child(2) {
+      left: calc(100% + var(--padding));
+    }
+    div {
+      margin-bottom: 30px;
+      input {
+        all: unset;
+        padding: 2px 15px;
+        background-color: #f7f7f7;
+        border: 1px solid #808080;
+        width: 100%;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+    }
+    button {
+      all: unset;
+      cursor: pointer;
+      display: inline-block;
+      padding: 8px 15px;
+      background-color: #009153;
+      color: #fff;
+      border-radius: 5px;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+  }
+}

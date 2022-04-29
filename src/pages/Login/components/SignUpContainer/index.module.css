@@ -1,0 +1,78 @@
+.container {
+  --padding: 70px;
+  max-width: 450px;
+  padding: 30px var(--padding);
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 5px auto;
+  overflow: hidden;
+}
+
+.container .btn_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.container.active .inner {
+  -webkit-transform: translateX(calc(-100% - var(--padding)));
+          transform: translateX(calc(-100% - var(--padding)));
+}
+
+.container .inner {
+  position: relative;
+  height: 310px;
+  width: 100%;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+}
+
+.container form {
+  font-size: 0.9em;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.container form:nth-child(2) {
+  left: calc(100% + var(--padding));
+}
+
+.container form div {
+  margin-bottom: 30px;
+}
+
+.container form div input {
+  all: unset;
+  padding: 2px 15px;
+  background-color: #f7f7f7;
+  border: 1px solid #808080;
+  width: 100%;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container form button {
+  all: unset;
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #009153;
+  color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*# sourceMappingURL=index.module.css.map */
