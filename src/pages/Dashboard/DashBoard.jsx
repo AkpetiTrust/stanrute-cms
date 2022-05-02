@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Header } from "../../components";
 import { Intro, Nav } from "./components";
 import { useParams } from "react-router-dom";
-import { Certification } from "./subpages";
+import { Certification, Notification } from "./subpages";
 import "../../styles/dashboard.css";
 
 function DashBoard() {
@@ -10,6 +10,7 @@ function DashBoard() {
 
   const [components, setComponents] = useState({
     certification: <Certification />,
+    notification: <Notification />,
   });
 
   const Component = () => components[section] || <div></div>;

@@ -1,0 +1,26 @@
+.checkbox {
+  margin-right: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid #009153;
+}
+
+.checkbox svg {
+  width: 15px;
+}
+
+.checkbox.checked {
+  border: none;
+  background-color: #009153;
+}
+/*# sourceMappingURL=index.module.css.map */

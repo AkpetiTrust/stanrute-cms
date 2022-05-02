@@ -1,0 +1,13 @@
+.row {
+  display: flex;
+  padding: 30px;
+  align-items: center;
+  justify-content: space-between;
+  .inner {
+    display: flex;
+    align-items: center;
+  }
+  &:nth-child(even) {
+    background-color: #e5fff4;
+  }
+}

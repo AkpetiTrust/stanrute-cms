@@ -1,0 +1,16 @@
+.ellipsis {
+  --width: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  cursor: pointer;
+  width: 20px;
+  span {
+    display: inline-block;
+    width: var(--width);
+    height: var(--width);
+    border-radius: 50%;
+    background-color: #9b9b9b;
+  }
+}

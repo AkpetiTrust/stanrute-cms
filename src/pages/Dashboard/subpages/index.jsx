@@ -1,2 +1,3 @@
 import Certification from "./Certification/Certification";
-export { Certification };
+import Notification from "./Notification/Notification";
+export { Certification, Notification };

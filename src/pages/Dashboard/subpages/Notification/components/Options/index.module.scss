@@ -1,0 +1,23 @@
+.options {
+  display: flex;
+  flex-direction: column;
+  background-color: #f8fffc;
+  position: absolute;
+  top: 100%;
+  right: -10px;
+  z-index: 3;
+  border-radius: 5px;
+  p {
+    padding: 5px 30px;
+    text-align: center;
+    font-size: 0.9em;
+    width: max-content;
+    cursor: pointer;
+    &:nth-child(1) {
+      border-bottom: 1px solid #009153;
+    }
+    &.delete {
+      color: #ff1e1e;
+    }
+  }
+}
