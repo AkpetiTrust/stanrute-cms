@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Ellipsis from "../Ellipsis/Ellipsis";
+import { Ellipsis } from "../../../../../../components";
 import Options from "../Options/Options";
 import style from "./index.module.css";
 

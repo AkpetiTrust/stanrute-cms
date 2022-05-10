@@ -1,0 +1,33 @@
+.options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #ffffff;
+  position: absolute;
+  top: 100%;
+  right: 10px;
+  z-index: 3;
+  border-radius: 5px;
+  -webkit-box-shadow: 3px 3px 80px rgba(242, 242, 242, 0.5);
+          box-shadow: 3px 3px 80px rgba(242, 242, 242, 0.5);
+}
+
+.options p {
+  padding: 15px 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.options p:nth-child(1) {
+  color: #808080;
+  border-bottom: 1px solid #808080;
+}
+
+.options p.delete {
+  color: #ff1e1e;
+}
+/*# sourceMappingURL=index.module.css.map */

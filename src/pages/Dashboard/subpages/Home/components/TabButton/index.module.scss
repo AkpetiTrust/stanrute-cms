@@ -1,0 +1,26 @@
+.btn {
+  all: unset;
+  --color: #808080;
+  background-color: #fff;
+  color: var(--color);
+  border: 1px solid var(--color);
+  border-radius: 5px;
+  padding: 2px 15px;
+  display: flex;
+  align-items: center;
+  max-width: fit-content;
+  cursor: pointer;
+
+  svg {
+    margin-right: 3px;
+    path {
+      fill: var(--color);
+    }
+  }
+
+  &.active {
+    --color: #fff;
+    border: none;
+    background-color: #009153;
+  }
+}
