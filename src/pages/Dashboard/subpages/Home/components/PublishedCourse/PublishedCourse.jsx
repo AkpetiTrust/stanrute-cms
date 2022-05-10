@@ -5,7 +5,7 @@ import rating from "./Rating.svg";
 import Options from "../Options/Options";
 import { Ellipsis } from "../../../../../../components";
 
-export default function PublishedCourse({ title }) {
+export default function PublishedCourse({ title, setEditorShown }) {
   const [optionsAreShown, setOptionsAreShown] = useState(false);
 
   return (
@@ -28,7 +28,7 @@ export default function PublishedCourse({ title }) {
               setOptionsAreShown(false);
             }}
           >
-            {optionsAreShown && <Options />}
+            {optionsAreShown && <Options setEditorShown={setEditorShown} />}
             <Ellipsis />
           </div>
         </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "./index.module.css";
 import PublishedCourse from "../PublishedCourse/PublishedCourse";
 
-function PublishedCourses() {
+function PublishedCourses({ setEditorShown }) {
   const [publishedCourses, setPublishedCourses] = useState([
     {
       title: "Crypto terminologies",
@@ -44,6 +44,7 @@ function PublishedCourses() {
         <PublishedCourse
           key={publishedCourse.id}
           title={publishedCourse.title}
+          setEditorShown={setEditorShown}
         />
       ))}
     </section>

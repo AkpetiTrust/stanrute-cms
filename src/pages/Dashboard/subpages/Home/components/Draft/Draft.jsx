@@ -2,7 +2,7 @@ import React from "react";
 import style from "./index.module.css";
 import image from "./card-image.png";
 
-export default function Draft({ title }) {
+export default function Draft({ title, setEditorShown }) {
   return (
     <div className={style.card}>
       <button className={`${style.btn} ${style.status}`} disabled>
@@ -14,7 +14,11 @@ export default function Draft({ title }) {
       <div className={style.card_talk}>
         <div className={style.title_container}>
           <p className="text-primary">{title}</p>
-          <button>
+          <button
+            onClick={() => {
+              setEditorShown(true);
+            }}
+          >
             <svg
               width="15"
               height="15"

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import style from "./index.module.css";
-import { TabButton, PublishedCourses, Drafts } from "./components";
+import { TabButton, PublishedCourses, Drafts, Editor } from "./components";
 
 function Home() {
   const [activeTab, setActiveTab] = useState("Course posts");
+  const [editorShown, setEditorShown] = useState(false);
 
   return (
     <section className={style.home}>
@@ -49,7 +50,12 @@ function Home() {
           setActiveTab={setActiveTab}
         />
       </div>
-      {activeTab === "Course posts" ? <PublishedCourses /> : <Drafts />}
+      {activeTab === "Course posts" ? (
+        <PublishedCourses setEditorShown={setEditorShown} />
+      ) : (
+        <Drafts setEditorShown={setEditorShown} />
+      )}
+      {editorShown && <Editor setEditorShown={setEditorShown} />}
     </section>
   );
 }

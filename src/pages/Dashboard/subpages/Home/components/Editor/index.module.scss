@@ -1,0 +1,64 @@
+.editor_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 5;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+
+  .inner {
+    position: absolute;
+    padding: 40px;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 650px;
+    background-color: #fff;
+    border-radius: 5px;
+
+    .close {
+      all: unset;
+      cursor: pointer;
+      position: absolute;
+      top: 15px;
+      right: 25px;
+
+      svg {
+        width: 25px;
+      }
+    }
+
+    .title {
+      font-weight: 700;
+    }
+
+    .btn_group {
+      display: flex;
+      gap: 50px;
+      margin-top: 50px;
+
+      button {
+        all: unset;
+        width: 120px;
+        line-height: 1em;
+        padding: 10px 0;
+        border-radius: 5px;
+        font-size: 0.9em;
+        text-align: center;
+        cursor: pointer;
+
+        &:first-child {
+          color: #fff;
+          background-color: #009153;
+        }
+
+        &:last-child {
+          color: #000;
+          background-color: #ffc01e;
+        }
+      }
+    }
+  }
+}

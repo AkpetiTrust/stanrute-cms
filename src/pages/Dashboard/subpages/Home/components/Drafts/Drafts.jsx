@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "./index.module.css";
 import Draft from "../Draft/Draft";
 
-function Drafts() {
+function Drafts({ setEditorShown }) {
   const [drafts, setDrafts] = useState([
     {
       title: "What is OTC?",
@@ -17,7 +17,11 @@ function Drafts() {
   return (
     <section className={style.grid}>
       {drafts.map((draft) => (
-        <Draft key={draft.id} title={draft.title} />
+        <Draft
+          key={draft.id}
+          title={draft.title}
+          setEditorShown={setEditorShown}
+        />
       ))}
     </section>
   );
