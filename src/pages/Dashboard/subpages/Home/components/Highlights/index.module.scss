@@ -1,0 +1,42 @@
+.highlights {
+  margin-top: 30px;
+}
+
+.label {
+  font-size: 0.9em;
+  color: #808080;
+}
+
+.row {
+  margin-top: 4px;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+
+  .input_group {
+    display: flex;
+    gap: 10px;
+
+    input {
+      all: unset;
+      cursor: text;
+      border-bottom: 1px solid #808080;
+      align-items: center;
+      width: 120px;
+      font-size: 0.9em;
+    }
+
+    button {
+      all: unset;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 3px;
+      width: fit-content;
+      background-color: #f7f7f7;
+      border: 1px solid #808080;
+      border-radius: 5px;
+    }
+  }
+}

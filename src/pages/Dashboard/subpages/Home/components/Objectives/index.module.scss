@@ -1,0 +1,39 @@
+.objectives {
+  color: #808080;
+  margin-top: 50px;
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
+
+  button {
+    all: unset;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 3px;
+    width: fit-content;
+    background-color: #f7f7f7;
+    border: 1px solid #808080;
+    border-radius: 5px;
+  }
+
+  input {
+    all: unset;
+    cursor: text;
+    color: inherit;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #808080;
+    display: block;
+    width: 60%;
+  }
+
+  .continue {
+    cursor: pointer;
+    margin-top: 40px;
+  }
+}

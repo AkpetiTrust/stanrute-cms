@@ -1,0 +1,20 @@
+.highlight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  font-size: 0.9em;
+  color: #009153;
+  padding: 2px 7px;
+  background-color: #e5fff4;
+  border: 1px solid #009153;
+  border-radius: 5px;
+}
+
+.highlight svg {
+  cursor: pointer;
+}
+/*# sourceMappingURL=index.module.css.map */

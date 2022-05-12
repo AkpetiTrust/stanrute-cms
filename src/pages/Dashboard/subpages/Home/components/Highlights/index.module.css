@@ -1,0 +1,58 @@
+.highlights {
+  margin-top: 30px;
+}
+
+.label {
+  font-size: 0.9em;
+  color: #808080;
+}
+
+.row {
+  margin-top: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.row .input_group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+
+.row .input_group input {
+  all: unset;
+  cursor: text;
+  border-bottom: 1px solid #808080;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 120px;
+  font-size: 0.9em;
+}
+
+.row .input_group button {
+  all: unset;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 3px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #f7f7f7;
+  border: 1px solid #808080;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=index.module.css.map */

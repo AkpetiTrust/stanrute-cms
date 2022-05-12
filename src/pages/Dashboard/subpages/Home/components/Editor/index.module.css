@@ -17,6 +17,7 @@
           transform: translateX(-50%);
   width: 700px;
   height: 650px;
+  overflow: auto;
   background-color: #fff;
   border-radius: 5px;
 }
@@ -31,6 +32,36 @@
 
 .editor_container .inner .close svg {
   width: 25px;
+}
+
+.editor_container .inner .options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 40px;
+  margin-top: 15px;
+}
+
+.editor_container .inner .options button {
+  all: unset;
+  cursor: pointer;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #808080;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.9em;
+}
+
+.editor_container .inner .options button svg {
+  width: 25px;
+  margin-right: 5px;
 }
 
 .editor_container .inner .title {

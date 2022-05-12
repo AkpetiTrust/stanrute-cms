@@ -15,6 +15,7 @@
     transform: translateX(-50%);
     width: 700px;
     height: 650px;
+    overflow: auto;
     background-color: #fff;
     border-radius: 5px;
 
@@ -27,6 +28,28 @@
 
       svg {
         width: 25px;
+      }
+    }
+
+    .options {
+      display: flex;
+      gap: 40px;
+      margin-top: 15px;
+
+      button {
+        all: unset;
+        cursor: pointer;
+        font-weight: 700;
+        display: flex;
+        color: #808080;
+        width: fit-content;
+        align-items: center;
+        font-size: 0.9em;
+
+        svg {
+          width: 25px;
+          margin-right: 5px;
+        }
       }
     }
 
