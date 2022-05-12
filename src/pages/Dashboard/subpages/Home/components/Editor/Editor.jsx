@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./index.module.css";
 
 function Editor({ course, setEditorShown }) {
+  const [courseContent, setCourseContent] = useState("");
+
   return (
     <div
       className={style.editor_container}
