@@ -18,14 +18,7 @@ function Editor({ course, setEditorShown }) {
   );
 
   return (
-    <div
-      className={style.editor_container}
-      onClick={(e) => {
-        if (e.target.className === style.editor_container) {
-          setEditorShown(false);
-        }
-      }}
-    >
+    <div className={style.editor_container}>
       <div className={style.inner}>
         <button
           onClick={() => {

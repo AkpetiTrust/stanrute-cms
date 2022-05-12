@@ -48,7 +48,8 @@
   gap: 15px;
 }
 
-.editor .toolbar .icons button {
+.editor .toolbar .icons button,
+.editor .toolbar .icons form {
   all: unset;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -64,12 +65,35 @@
   cursor: pointer;
 }
 
-.editor .toolbar .icons button:global(.active) {
+.editor .toolbar .icons button:global(.active),
+.editor .toolbar .icons form:global(.active) {
   background-color: #00663a;
 }
 
-.editor .toolbar .icons button svg {
+.editor .toolbar .icons button svg,
+.editor .toolbar .icons form svg {
   width: 16px;
+}
+
+.editor .toolbar .icons form label {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.editor .toolbar .icons form input {
+  display: none;
+}
+
+.editor img {
+  width: 100%;
 }
 
 .editor :global(.DraftEditor-editorContainer) {

@@ -4,6 +4,7 @@ import style from "./index.module.css";
 import { stateToHTML } from "draft-js-export-html";
 import ControlButton from "../ControlButton/ControlButton";
 import "draft-js/dist/Draft.css";
+import Image from "../Image/Image";
 
 function RichTextEditor({ editorState, setEditorState, setHTMLValue }) {
   const [controls, _] = useState([
@@ -138,6 +139,25 @@ function RichTextEditor({ editorState, setEditorState, setHTMLValue }) {
       isBlock: true,
       style: "ordered-list-item",
     },
+
+    {
+      icon: (
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18.3337 6.35415V15.7291C18.3337 16.5918 17.6338 17.2916 16.7712 17.2916H3.22949C2.36686 17.2916 1.66699 16.5918 1.66699 15.7291V6.35415C1.66699 5.49152 2.36686 4.79165 3.22949 4.79165H6.09408L6.49447 3.72068C6.72233 3.11196 7.30501 2.70831 7.95606 2.70831H12.0413C12.6924 2.70831 13.2751 3.11196 13.5029 3.72068L13.9066 4.79165H16.7712C17.6338 4.79165 18.3337 5.49152 18.3337 6.35415ZM13.9066 11.0416C13.9066 8.8867 12.1553 7.1354 10.0003 7.1354C7.84538 7.1354 6.09408 8.8867 6.09408 11.0416C6.09408 13.1966 7.84538 14.9479 10.0003 14.9479C12.1553 14.9479 13.9066 13.1966 13.9066 11.0416ZM12.8649 11.0416C12.8649 12.6204 11.5791 13.9062 10.0003 13.9062C8.42155 13.9062 7.13574 12.6204 7.13574 11.0416C7.13574 9.46287 8.42155 8.17706 10.0003 8.17706C11.5791 8.17706 12.8649 9.46287 12.8649 11.0416Z"
+            fill="#66FFBE"
+          />
+        </svg>
+      ),
+      isBlock: false,
+      style: "IMAGE",
+    },
   ]);
 
   const [placeholderIsHidden, setPlaceholderIsHidden] = useState(false);
@@ -177,6 +197,17 @@ function RichTextEditor({ editorState, setEditorState, setHTMLValue }) {
       return;
     }
     return getDefaultKeyBinding(e);
+  };
+
+  const mediaBlockRenderer = (block) => {
+    if (block.getType() === "atomic") {
+      return {
+        component: Image,
+        editable: false,
+      };
+    }
+
+    return null;
   };
 
   return (
@@ -232,6 +263,7 @@ function RichTextEditor({ editorState, setEditorState, setHTMLValue }) {
         editorState={editorState}
         handleKeyCommand={handleKeyCommand}
         keyBindingFn={mapKeyToEditorCommand}
+        blockRendererFn={mediaBlockRenderer}
         onChange={(state) => {
           setEditorState(state);
           setHTMLValue(stateToHTML(state.getCurrentContent()));

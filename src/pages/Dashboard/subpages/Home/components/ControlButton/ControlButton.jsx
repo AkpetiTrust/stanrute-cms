@@ -1,6 +1,8 @@
 import React from "react";
-import { RichUtils } from "draft-js";
+import { RichUtils, EditorState, AtomicBlockUtils } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import storage from "../../../../../../utils/instances/firebase";
 
 function ControlButton({
   control: { icon, isBlock, style },
@@ -20,6 +22,37 @@ function ControlButton({
     }
   };
 
+  const insertImage = (url) => {
+    const contentState = editorState.getCurrentContent();
+    const contentStateWithEntity = contentState.createEntity(
+      "IMAGE",
+      "IMMUTABLE",
+      { src: url }
+    );
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+    const newEditorState = EditorState.set(editorState, {
+      currentContent: contentStateWithEntity,
+    });
+    return AtomicBlockUtils.insertAtomicBlock(newEditorState, entityKey, " ");
+  };
+
+  const handleChange = (e) => {
+    let image = e.currentTarget.files[0];
+    let formData = new FormData();
+    formData.append("image", image);
+
+    const storageRef = ref(storage, image.name);
+
+    uploadBytes(storageRef, image).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        console.log(url);
+        const newState = insertImage(url);
+        setEditorState(newState);
+        setHTMLValue(stateToHTML(newState.getCurrentContent()));
+      });
+    });
+  };
+
   const selection = editorState.getSelection();
   const active =
     editorState
@@ -27,10 +60,15 @@ function ControlButton({
       .getBlockForKey(selection.getStartKey())
       .getType() === style || editorState.getCurrentInlineStyle().has(style);
 
-  return (
+  return style !== "IMAGE" ? (
     <button className={`${active ? "active" : ""}`} onClick={handleClick}>
       {icon}
     </button>
+  ) : (
+    <form>
+      <label htmlFor="file">{icon}</label>
+      <input onChange={handleChange} type="file" name="file" id="file" />
+    </form>
   );
 }
 
