@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import style from "./index.module.css";
 import Highlights from "../Highlights/Highlights";
 import Objectives from "../Objectives/Objectives";
+import { EditorState } from "draft-js";
+import RichTextEditor from "../RichTextEditor/RichTextEditor";
 
 function Editor({ course, setEditorShown }) {
   const [courseContent, setCourseContent] = useState("");
@@ -9,6 +11,11 @@ function Editor({ course, setEditorShown }) {
   const [highlightsAreShown, setHighlightsAreShown] = useState(false);
   const [objectives, setObjectives] = useState([]);
   const [objectivesAreShown, setObjectivesAreShown] = useState(false);
+  const [HTMLValue, setHTMLValue] = useState("");
+
+  const [editorState, setEditorState] = React.useState(() =>
+    EditorState.createEmpty()
+  );
 
   return (
     <div
@@ -111,7 +118,11 @@ function Editor({ course, setEditorShown }) {
             setObjectivesAreShown={setObjectivesAreShown}
           />
         ) : (
-          ""
+          <RichTextEditor
+            editorState={editorState}
+            setEditorState={setEditorState}
+            setHTMLValue={setHTMLValue}
+          />
         )}
         <div className={style.btn_group}>
           <button>Publish</button>

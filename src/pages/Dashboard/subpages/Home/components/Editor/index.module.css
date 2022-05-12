@@ -15,7 +15,7 @@
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  width: 700px;
+  width: 900px;
   height: 650px;
   overflow: auto;
   background-color: #fff;

@@ -1,0 +1,61 @@
+.editor {
+  margin-top: 40px;
+
+  .toolbar {
+    background-color: #009153;
+    color: #fff;
+    padding: 12px 24px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+
+    p {
+      display: flex;
+      align-items: center;
+      &.preview {
+        color: #66ffbe;
+      }
+      &.write {
+        width: 30%;
+      }
+      svg {
+        width: 20px;
+        margin-right: 5px;
+      }
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      button {
+        all: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        svg {
+          width: 16px;
+        }
+      }
+    }
+  }
+
+  :global(.DraftEditor-root) {
+    position: relative;
+  }
+
+  :global(.DraftEditor-editorContainer) {
+    min-height: 200px;
+  }
+
+  :global(.public-DraftEditorPlaceholder-root) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #808080;
+    z-index: -1;
+  }
+}

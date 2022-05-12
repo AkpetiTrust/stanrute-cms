@@ -1,0 +1,84 @@
+.editor {
+  margin-top: 40px;
+}
+
+.editor .toolbar {
+  background-color: #009153;
+  color: #fff;
+  padding: 12px 24px;
+  margin-bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-radius: 5px;
+}
+
+.editor .toolbar p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.editor .toolbar p.preview {
+  color: #66ffbe;
+}
+
+.editor .toolbar p.write {
+  width: 30%;
+}
+
+.editor .toolbar p svg {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.editor .toolbar .icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 25px;
+}
+
+.editor .toolbar .icons button {
+  all: unset;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+.editor .toolbar .icons button svg {
+  width: 16px;
+}
+
+.editor :global(.DraftEditor-root) {
+  position: relative;
+}
+
+.editor :global(.DraftEditor-editorContainer) {
+  min-height: 200px;
+}
+
+.editor :global(.public-DraftEditorPlaceholder-root) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #808080;
+  z-index: -1;
+}
+/*# sourceMappingURL=index.module.css.map */
