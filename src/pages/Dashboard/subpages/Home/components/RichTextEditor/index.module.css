@@ -45,7 +45,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 25px;
+  gap: 15px;
 }
 
 .editor .toolbar .icons button {
@@ -59,15 +59,17 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding: 5px;
+  border-radius: 5px;
   cursor: pointer;
+}
+
+.editor .toolbar .icons button:global(.active) {
+  background-color: #00663a;
 }
 
 .editor .toolbar .icons button svg {
   width: 16px;
-}
-
-.editor :global(.DraftEditor-root) {
-  position: relative;
 }
 
 .editor :global(.DraftEditor-editorContainer) {
@@ -75,10 +77,18 @@
 }
 
 .editor :global(.public-DraftEditorPlaceholder-root) {
-  position: absolute;
-  top: 0;
-  left: 0;
   color: #808080;
-  z-index: -1;
+}
+
+.editor.no_placeholder :global(.public-DraftEditorPlaceholder-root) {
+  display: none;
+}
+
+.editor blockquote {
+  border-left: 5px solid #eee;
+  color: #666;
+  font-style: italic;
+  margin: 16px 0;
+  padding: 10px 20px;
 }
 /*# sourceMappingURL=index.module.css.map */

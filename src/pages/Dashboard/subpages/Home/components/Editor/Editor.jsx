@@ -6,12 +6,12 @@ import { EditorState } from "draft-js";
 import RichTextEditor from "../RichTextEditor/RichTextEditor";
 
 function Editor({ course, setEditorShown }) {
-  const [courseContent, setCourseContent] = useState("");
   const [highlights, setHighlights] = useState([]);
   const [highlightsAreShown, setHighlightsAreShown] = useState(false);
   const [objectives, setObjectives] = useState([]);
   const [objectivesAreShown, setObjectivesAreShown] = useState(false);
   const [HTMLValue, setHTMLValue] = useState("");
+  const [courseTitle, setCourseTitle] = useState("");
 
   const [editorState, setEditorState] = React.useState(() =>
     EditorState.createEmpty()
@@ -106,7 +106,16 @@ function Editor({ course, setEditorShown }) {
             Add objectives
           </button>
         </div>
-        <p className={style.course_title}></p>
+        <input
+          type={"text"}
+          placeholder="Course title"
+          value={courseTitle}
+          className={style.course_title}
+          autoFocus
+          onChange={(e) => {
+            setCourseTitle(e.currentTarget.value);
+          }}
+        />
         {highlightsAreShown && (
           <Highlights highlights={highlights} setHighlights={setHighlights} />
         )}

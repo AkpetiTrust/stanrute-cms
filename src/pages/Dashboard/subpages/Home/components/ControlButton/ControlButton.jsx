@@ -20,7 +20,18 @@ function ControlButton({
     }
   };
 
-  return <button onClick={handleClick}>{icon}</button>;
+  const selection = editorState.getSelection();
+  const active =
+    editorState
+      .getCurrentContent()
+      .getBlockForKey(selection.getStartKey())
+      .getType() === style || editorState.getCurrentInlineStyle().has(style);
+
+  return (
+    <button className={`${active ? "active" : ""}`} onClick={handleClick}>
+      {icon}
+    </button>
+  );
 }
 
 export default ControlButton;

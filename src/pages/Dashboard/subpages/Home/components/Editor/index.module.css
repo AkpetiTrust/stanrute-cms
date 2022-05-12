@@ -68,6 +68,39 @@
   font-weight: 700;
 }
 
+.editor_container .inner .course_title {
+  all: unset;
+  cursor: text;
+  font-size: 1.5em;
+  margin-top: 40px;
+  width: 100%;
+  font-weight: 700;
+}
+
+.editor_container .inner .course_title::-webkit-input-placeholder {
+  color: #808080;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.editor_container .inner .course_title:-ms-input-placeholder {
+  color: #808080;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.editor_container .inner .course_title::-ms-input-placeholder {
+  color: #808080;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.editor_container .inner .course_title::placeholder {
+  color: #808080;
+  font-size: 1em;
+  font-weight: normal;
+}
+
 .editor_container .inner .btn_group {
   display: -webkit-box;
   display: -ms-flexbox;

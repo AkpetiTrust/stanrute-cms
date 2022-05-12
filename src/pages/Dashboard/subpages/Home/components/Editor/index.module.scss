@@ -57,6 +57,20 @@
       font-weight: 700;
     }
 
+    .course_title {
+      all: unset;
+      cursor: text;
+      font-size: 1.5em;
+      margin-top: 40px;
+      width: 100%;
+      font-weight: 700;
+      &::placeholder {
+        color: #808080;
+        font-size: 1em;
+        font-weight: normal;
+      }
+    }
+
     .btn_group {
       display: flex;
       gap: 50px;

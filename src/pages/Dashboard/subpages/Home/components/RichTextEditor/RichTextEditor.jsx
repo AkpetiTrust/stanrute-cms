@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { Editor } from "draft-js";
+import React, { useState, useEffect } from "react";
+import { Editor, RichUtils, getDefaultKeyBinding } from "draft-js";
 import style from "./index.module.css";
 import { stateToHTML } from "draft-js-export-html";
 import ControlButton from "../ControlButton/ControlButton";
+import "draft-js/dist/Draft.css";
 
 function RichTextEditor({ editorState, setEditorState, setHTMLValue }) {
   const [controls, _] = useState([
@@ -78,7 +79,7 @@ function RichTextEditor({ editorState, setEditorState, setHTMLValue }) {
       ),
 
       isBlock: true,
-      style: "block-quote",
+      style: "blockquote",
     },
     {
       icon: (
@@ -139,8 +140,51 @@ function RichTextEditor({ editorState, setEditorState, setHTMLValue }) {
     },
   ]);
 
+  const [placeholderIsHidden, setPlaceholderIsHidden] = useState(false);
+
+  useEffect(() => {
+    let contentState = editorState.getCurrentContent();
+    if (!contentState.hasText()) {
+      let styleType = contentState.getBlockMap().first().getType();
+      if (
+        styleType === "unordered-list-item" ||
+        styleType === "ordered-list-item"
+      ) {
+        setPlaceholderIsHidden(true);
+      } else {
+        setPlaceholderIsHidden(false);
+      }
+    }
+  }, [editorState]);
+
+  const handleKeyCommand = (command, editorState) => {
+    const newState = RichUtils.handleKeyCommand(editorState, command);
+    if (newState) {
+      setEditorState(newState);
+      setHTMLValue(stateToHTML(newState.getCurrentContent()));
+      return true;
+    }
+    return false;
+  };
+
+  const mapKeyToEditorCommand = (e) => {
+    if (e.keyCode === 9 /* TAB */) {
+      const newEditorState = RichUtils.onTab(e, editorState, 4 /* maxDepth */);
+      if (newEditorState !== editorState) {
+        setEditorState(newEditorState);
+        setHTMLValue(stateToHTML(newEditorState.getCurrentContent()));
+      }
+      return;
+    }
+    return getDefaultKeyBinding(e);
+  };
+
   return (
-    <div className={style.editor}>
+    <div
+      className={`${style.editor} ${
+        placeholderIsHidden ? style.no_placeholder : ""
+      }`}
+    >
       <div className={style.toolbar}>
         <p className={style.write}>
           <svg
@@ -186,6 +230,8 @@ function RichTextEditor({ editorState, setEditorState, setHTMLValue }) {
       </div>
       <Editor
         editorState={editorState}
+        handleKeyCommand={handleKeyCommand}
+        keyBindingFn={mapKeyToEditorCommand}
         onChange={(state) => {
           setEditorState(state);
           setHTMLValue(stateToHTML(state.getCurrentContent()));
