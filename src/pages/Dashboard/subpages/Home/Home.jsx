@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import style from "./index.module.css";
 import { TabButton, PublishedCourses, Drafts, Editor } from "./components";
+import { CategoryBar } from "../../../../components";
 
 function Home() {
   const [activeTab, setActiveTab] = useState("Course posts");
@@ -8,6 +9,12 @@ function Home() {
 
   return (
     <section className={style.home}>
+      <CategoryBar
+        showButton
+        onClick={() => {
+          setEditorShown(true);
+        }}
+      />
       <div className={style.btn_group}>
         <TabButton
           icon={

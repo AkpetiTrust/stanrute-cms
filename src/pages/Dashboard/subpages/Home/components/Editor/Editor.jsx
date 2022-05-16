@@ -5,6 +5,9 @@ import Objectives from "../Objectives/Objectives";
 import { EditorState } from "draft-js";
 import RichTextEditor from "../RichTextEditor/RichTextEditor";
 
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import storage from "../../../../../../utils/instances/firebase";
+
 function Editor({ course, setEditorShown }) {
   const [highlights, setHighlights] = useState([]);
   const [highlightsAreShown, setHighlightsAreShown] = useState(false);
@@ -12,10 +15,25 @@ function Editor({ course, setEditorShown }) {
   const [objectivesAreShown, setObjectivesAreShown] = useState(false);
   const [HTMLValue, setHTMLValue] = useState("");
   const [courseTitle, setCourseTitle] = useState("");
+  const [courseCover, setCourseCover] = useState("");
 
   const [editorState, setEditorState] = React.useState(() =>
     EditorState.createEmpty()
   );
+
+  const handleChange = (e) => {
+    let image = e.currentTarget.files[0];
+    let formData = new FormData();
+    formData.append("image", image);
+
+    const storageRef = ref(storage, image.name);
+
+    uploadBytes(storageRef, image).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setCourseCover(url);
+      });
+    });
+  };
 
   return (
     <div className={style.editor_container}>
@@ -43,7 +61,7 @@ function Editor({ course, setEditorShown }) {
         </button>
         <p className={style.title}>{!!course ? "Edit post" : "Make post"}</p>
         <div className={style.options}>
-          <button>
+          <label htmlFor="cover">
             <svg
               width="30"
               height="30"
@@ -57,7 +75,9 @@ function Editor({ course, setEditorShown }) {
               />
             </svg>
             Set Cover
-          </button>
+          </label>
+
+          <input onChange={handleChange} type="file" name="cover" id="cover" />
 
           <button
             onClick={() => {

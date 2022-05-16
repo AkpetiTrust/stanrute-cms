@@ -1,0 +1,38 @@
+.category_bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #009153;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: 70px;
+
+  p {
+    font-weight: 600;
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    button {
+      all: unset;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  button.add_course {
+    all: unset;
+    cursor: pointer;
+    padding: 4px 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    color: #000;
+    font-size: 0.9em;
+  }
+}

@@ -45,7 +45,6 @@ function ControlButton({
 
     uploadBytes(storageRef, image).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
-        console.log(url);
         const newState = insertImage(url);
         setEditorState(newState);
         setHTMLValue(stateToHTML(newState.getCurrentContent()));

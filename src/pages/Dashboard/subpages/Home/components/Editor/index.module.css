@@ -22,6 +22,20 @@
   border-radius: 5px;
 }
 
+.editor_container .inner::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 15px;
+}
+
+.editor_container .inner::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.editor_container .inner::-webkit-scrollbar-thumb {
+  background-color: #b8b2b6;
+  border-radius: 15px;
+}
+
 .editor_container .inner .close {
   all: unset;
   cursor: pointer;
@@ -42,7 +56,8 @@
   margin-top: 15px;
 }
 
-.editor_container .inner .options button {
+.editor_container .inner .options button,
+.editor_container .inner .options label {
   all: unset;
   cursor: pointer;
   font-weight: 700;
@@ -59,9 +74,14 @@
   font-size: 0.9em;
 }
 
-.editor_container .inner .options button svg {
+.editor_container .inner .options button svg,
+.editor_container .inner .options label svg {
   width: 25px;
   margin-right: 5px;
+}
+
+.editor_container .inner .options input {
+  display: none;
 }
 
 .editor_container .inner .title {

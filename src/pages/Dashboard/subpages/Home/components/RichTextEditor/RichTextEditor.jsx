@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Editor, RichUtils, getDefaultKeyBinding } from "draft-js";
+import {
+  Editor,
+  RichUtils,
+  getDefaultKeyBinding,
+  EditorState,
+  AtomicBlockUtils,
+} from "draft-js";
 import style from "./index.module.css";
 import { stateToHTML } from "draft-js-export-html";
 import ControlButton from "../ControlButton/ControlButton";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import storage from "../../../../../../utils/instances/firebase";
 import "draft-js/dist/Draft.css";
 import Image from "../Image/Image";
 
@@ -210,6 +218,52 @@ function RichTextEditor({ editorState, setEditorState, setHTMLValue }) {
     return null;
   };
 
+  const insertImage = (url) => {
+    const contentState = editorState.getCurrentContent();
+    const contentStateWithEntity = contentState.createEntity(
+      "IMAGE",
+      "IMMUTABLE",
+      { src: url }
+    );
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+    const newEditorState = EditorState.set(editorState, {
+      currentContent: contentStateWithEntity,
+    });
+    return AtomicBlockUtils.insertAtomicBlock(newEditorState, entityKey, " ");
+  };
+
+  const handlePastedFiles = (files) => {
+    let image = files[0];
+    let formData = new FormData();
+    formData.append("image", image);
+
+    const storageRef = ref(storage, image.name);
+
+    uploadBytes(storageRef, image).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        const newState = insertImage(url);
+        setEditorState(newState);
+        setHTMLValue(stateToHTML(newState.getCurrentContent()));
+      });
+    });
+  };
+
+  const handleDroppedFiles = (_, files) => {
+    let image = files[0];
+    let formData = new FormData();
+    formData.append("image", image);
+
+    const storageRef = ref(storage, image.name);
+
+    uploadBytes(storageRef, image).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        const newState = insertImage(url);
+        setEditorState(newState);
+        setHTMLValue(stateToHTML(newState.getCurrentContent()));
+      });
+    });
+  };
+
   return (
     <div
       className={`${style.editor} ${
@@ -269,6 +323,8 @@ function RichTextEditor({ editorState, setEditorState, setHTMLValue }) {
           setHTMLValue(stateToHTML(state.getCurrentContent()));
         }}
         placeholder="Write course..."
+        handlePastedFiles={handlePastedFiles}
+        handleDroppedFiles={handleDroppedFiles}
       />
     </div>
   );

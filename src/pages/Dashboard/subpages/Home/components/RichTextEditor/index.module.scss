@@ -1,8 +1,13 @@
 .editor {
   margin-top: 40px;
+  position: relative;
 
   .toolbar {
     background-color: #009153;
+    position: sticky;
+    left: 0;
+    top: 0;
+    z-index: 6;
     color: #fff;
     padding: 12px 24px;
     margin-bottom: 30px;

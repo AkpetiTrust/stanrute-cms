@@ -19,6 +19,20 @@
     background-color: #fff;
     border-radius: 5px;
 
+    &::-webkit-scrollbar {
+      width: 7px;
+      border-radius: 15px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #b8b2b6;
+      border-radius: 15px;
+    }
+
     .close {
       all: unset;
       cursor: pointer;
@@ -36,7 +50,8 @@
       gap: 40px;
       margin-top: 15px;
 
-      button {
+      button,
+      label {
         all: unset;
         cursor: pointer;
         font-weight: 700;
@@ -50,6 +65,10 @@
           width: 25px;
           margin-right: 5px;
         }
+      }
+
+      input {
+        display: none;
       }
     }
 
