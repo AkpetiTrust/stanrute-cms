@@ -7,4 +7,10 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+
+.input.error {
+  color: #ff1e1e;
+  border-color: currentColor;
+  background-color: #fff0f0;
+}
 /*# sourceMappingURL=index.module.css.map */

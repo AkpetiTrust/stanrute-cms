@@ -2,11 +2,18 @@ import React, { useState } from "react";
 import style from "./index.module.css";
 import { Input } from "../../../../components";
 
-function Password() {
+function Password({ onChange, error, showParagraph }) {
   const [isPasswordType, setIsPasswordType] = useState(true);
   return (
     <div className={style.password}>
-      <Input type={isPasswordType ? "password" : "text"} name="password" />
+      <Input
+        type={isPasswordType ? "password" : "text"}
+        required={true}
+        name="password"
+        onChange={onChange}
+        error={error}
+      />
+      {showParagraph && error && <p>*Credentials invalid</p>}
       <span
         onClick={() => {
           setIsPasswordType((prevValue) => !prevValue);

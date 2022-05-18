@@ -81,7 +81,7 @@ function Editor({ course, setEditorShown }) {
 
           <button
             onClick={() => {
-              setHighlightsAreShown(true);
+              setHighlightsAreShown((prevValue) => !prevValue);
             }}
           >
             <svg

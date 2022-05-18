@@ -36,8 +36,18 @@
     }
     div {
       margin-bottom: 30px;
+      label {
+        color: #626262;
+      }
       input {
         width: 100%;
+        & + p {
+          font-size: 0.9em;
+          text-align: left;
+          color: #808080;
+          line-height: 1em;
+          margin-top: 5px;
+        }
       }
     }
     button {

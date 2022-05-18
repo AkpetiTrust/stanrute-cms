@@ -51,8 +51,20 @@
   margin-bottom: 30px;
 }
 
+.container form div label {
+  color: #626262;
+}
+
 .container form div input {
   width: 100%;
+}
+
+.container form div input + p {
+  font-size: 0.9em;
+  text-align: left;
+  color: #808080;
+  line-height: 1em;
+  margin-top: 5px;
 }
 
 .container form button {

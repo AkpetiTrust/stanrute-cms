@@ -5,4 +5,10 @@
   border: 1px solid #808080;
   border-radius: 5px;
   box-sizing: border-box;
+
+  &.error {
+    color: #ff1e1e;
+    border-color: currentColor;
+    background-color: #fff0f0;
+  }
 }
