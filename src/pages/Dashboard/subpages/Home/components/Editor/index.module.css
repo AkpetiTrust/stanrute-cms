@@ -39,7 +39,7 @@
 .editor_container .inner .close {
   all: unset;
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   top: 15px;
   right: 25px;
 }

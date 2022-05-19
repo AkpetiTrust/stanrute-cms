@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./index.module.css";
 import PublishedCourse from "../PublishedCourse/PublishedCourse";
+import { constants } from "../../../../../../constants";
 
 function PublishedCourses({ setEditorShown }) {
   const [publishedCourses, setPublishedCourses] = useState([
@@ -37,6 +38,16 @@ function PublishedCourses({ setEditorShown }) {
       id: 8,
     },
   ]);
+
+  const { apiUrl } = constants;
+
+  useEffect(() => {
+    fetch(`${apiUrl}/courses`)
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
+  }, []);
 
   return (
     <section className={style.grid}>

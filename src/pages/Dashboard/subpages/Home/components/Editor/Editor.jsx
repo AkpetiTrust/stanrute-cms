@@ -4,6 +4,7 @@ import Highlights from "../Highlights/Highlights";
 import Objectives from "../Objectives/Objectives";
 import { EditorState } from "draft-js";
 import RichTextEditor from "../RichTextEditor/RichTextEditor";
+import { constants } from "../../../../../../constants";
 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import storage from "../../../../../../utils/instances/firebase";
@@ -17,7 +18,9 @@ function Editor({ course, setEditorShown }) {
   const [courseTitle, setCourseTitle] = useState("");
   const [courseCover, setCourseCover] = useState("");
 
-  const [editorState, setEditorState] = React.useState(() =>
+  const { apiUrl, token } = constants;
+
+  const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
 
@@ -33,6 +36,36 @@ function Editor({ course, setEditorShown }) {
         setCourseCover(url);
       });
     });
+  };
+
+  const handleSubmit = (published) => {
+    let title = courseTitle;
+    let content = HTMLValue;
+    let img = courseCover;
+    const uploadData = JSON.stringify({
+      title,
+      content,
+      img,
+      highlights,
+      objectives,
+      published,
+    });
+
+    if (!content) return;
+
+    fetch(`${apiUrl}/add-course`, {
+      headers: {
+        Authorization: `Bearer ${token()}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: uploadData,
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setEditorShown(false);
+      });
   };
 
   return (
@@ -147,8 +180,20 @@ function Editor({ course, setEditorShown }) {
           />
         )}
         <div className={style.btn_group}>
-          <button>Publish</button>
-          <button>Add to draft</button>
+          <button
+            onClick={() => {
+              handleSubmit(true);
+            }}
+          >
+            Publish
+          </button>
+          <button
+            onClick={() => {
+              handleSubmit(false);
+            }}
+          >
+            Add to draft
+          </button>
         </div>
       </div>
     </div>
