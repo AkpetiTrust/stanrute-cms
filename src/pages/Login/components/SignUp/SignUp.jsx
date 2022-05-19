@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import Password from "../Password/Password";
 import { Input } from "../../../../components";
 import { constants } from "../../../../constants";
+import { useNavigate } from "react-router-dom";
+import { Loading } from "../../../../components";
 
 function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signUpError, setSignUpError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
   const [loading, setLoading] = useState(false);
   const { apiUrl } = constants;
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,6 +22,7 @@ function SignUp() {
       return setSignUpError(true);
     }
     setSignUpError(false);
+    setEmailError(false);
     fetch(`${apiUrl}/signup`, {
       method: "POST",
       headers: {
@@ -32,7 +37,12 @@ function SignUp() {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        setLoading(false);
+        if (!result.status) {
+          return setEmailError(true);
+        }
+        localStorage.setItem("user", JSON.stringify(result));
+        navigate("/dashboard");
       });
   };
 
@@ -47,9 +57,12 @@ function SignUp() {
           required={true}
           type="email"
           name="email"
-          error={signUpError}
+          error={signUpError || emailError}
         />
-        {signUpError && <p>*this email is not supported as an admin</p>}
+        {signUpError && (
+          <p className="error">*this email is not supported as an admin</p>
+        )}
+        {emailError && <p className="error">*this email has been taken</p>}
       </div>
       <div>
         <label>Name</label>
@@ -70,7 +83,13 @@ function SignUp() {
           }}
         />
       </div>
-      <button>Continue</button>
+      {loading ? (
+        <button>
+          <Loading color="#ccffe9" height={"26px"} />
+        </button>
+      ) : (
+        <button>Continue</button>
+      )}
     </form>
   );
 }

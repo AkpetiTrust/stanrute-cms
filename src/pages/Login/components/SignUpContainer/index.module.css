@@ -47,24 +47,16 @@
   left: calc(100% + var(--padding));
 }
 
-.container form div {
+.container form > div {
   margin-bottom: 30px;
 }
 
-.container form div label {
+.container form > div label {
   color: #626262;
 }
 
-.container form div input {
+.container form > div input {
   width: 100%;
-}
-
-.container form div input + p {
-  font-size: 0.9em;
-  text-align: left;
-  color: #808080;
-  line-height: 1em;
-  margin-top: 5px;
 }
 
 .container form button {
@@ -79,5 +71,13 @@
   text-align: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.container :global(.error) {
+  font-size: 0.9em;
+  text-align: left;
+  color: #808080;
+  line-height: 1em;
+  margin-top: 5px;
 }
 /*# sourceMappingURL=index.module.css.map */
