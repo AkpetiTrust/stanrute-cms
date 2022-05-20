@@ -8,6 +8,19 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.editor_container .close {
+  all: unset;
+  cursor: pointer;
+  position: fixed;
+  top: calc(15px + 35px);
+  left: calc(50% + 400px);
+  z-index: 8;
+}
+
+.editor_container .close svg {
+  width: 25px;
+}
+
 .editor_container .inner {
   position: absolute;
   padding: 40px;
@@ -34,18 +47,6 @@
 .editor_container .inner::-webkit-scrollbar-thumb {
   background-color: #b8b2b6;
   border-radius: 15px;
-}
-
-.editor_container .inner .close {
-  all: unset;
-  cursor: pointer;
-  position: fixed;
-  top: 15px;
-  right: 25px;
-}
-
-.editor_container .inner .close svg {
-  width: 25px;
 }
 
 .editor_container .inner .options {

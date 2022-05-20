@@ -36,6 +36,7 @@
 
 .analytics .grid .subgrid {
   margin-top: 40px;
+  width: 80%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;

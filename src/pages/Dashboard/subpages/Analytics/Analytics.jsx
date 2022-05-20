@@ -1,12 +1,44 @@
 import React, { useState } from "react";
 import style from "./index.module.css";
-import { Number } from "./components";
+import { Number, Table } from "./components";
 
 function Analytics() {
   const [viewsInSevenDays, setViewsInSevenDays] = useState(20);
   const [viewsInThirtyDays, setViewsInThirtyDays] = useState(74);
   const [learnersInSevenDays, setLearnersInSevenDays] = useState(5);
   const [learnersInThirtyDays, setLearnersInThirtyDays] = useState(25);
+  const [courseStats, setCourseStats] = useState([
+    {
+      title: "Crypto Terminologies",
+      published: "25/8/2022",
+      views: 4,
+      graduates: 10,
+    },
+    {
+      title: "Crypto Terminologies",
+      published: "25/8/2022",
+      views: 4,
+      graduates: 10,
+    },
+    {
+      title: "Crypto Terminologies",
+      published: "25/8/2022",
+      views: 4,
+      graduates: 10,
+    },
+    {
+      title: "Crypto Terminologies",
+      published: "25/8/2022",
+      views: 4,
+      graduates: 10,
+    },
+    {
+      title: "Crypto Terminologies",
+      published: "25/8/2022",
+      views: 4,
+      graduates: 10,
+    },
+  ]);
 
   return (
     <div className={style.analytics}>
@@ -55,6 +87,7 @@ function Analytics() {
 
         <div className={style.course_stats}>
           <p className={style.title}>Course Stats</p>
+          <Table courseStats={courseStats} />
         </div>
       </div>
     </div>

@@ -20,6 +20,7 @@ function RichTextEditor({
   setEditorState,
   setHTMLValue,
   loading,
+  setLoading,
 }) {
   const [controls, _] = useState([
     {
@@ -235,10 +236,12 @@ function RichTextEditor({
     const newEditorState = EditorState.set(editorState, {
       currentContent: contentStateWithEntity,
     });
+    setLoading(false);
     return AtomicBlockUtils.insertAtomicBlock(newEditorState, entityKey, " ");
   };
 
   const handlePastedFiles = (files) => {
+    setLoading(true);
     let image = files[0];
     let formData = new FormData();
     formData.append("image", image);
@@ -255,6 +258,7 @@ function RichTextEditor({
   };
 
   const handleDroppedFiles = (_, files) => {
+    setLoading(true);
     let image = files[0];
     let formData = new FormData();
     formData.append("image", image);
