@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import Highlight from "../Highlight/Highlight";
 import style from "./index.module.css";
+import generateRandomColor from "../../../../../../utils/functions/generateRandomColor";
 
 function Highlights({ highlights, setHighlights }) {
   const [value, setValue] = useState("");
 
   const handleClick = () => {
     if (!value) return;
-    setHighlights((prevHighlights) => [...prevHighlights, value]);
+    setHighlights((prevHighlights) => [
+      ...prevHighlights,
+      { text: value, color: generateRandomColor() },
+    ]);
     setValue("");
   };
 
@@ -17,9 +21,10 @@ function Highlights({ highlights, setHighlights }) {
       <div className={style.row}>
         {highlights.map((highlight) => (
           <Highlight
-            text={highlight}
+            text={highlight.text}
+            color={highlight.color}
             setHighlights={setHighlights}
-            key={highlight}
+            key={highlight.text}
           />
         ))}
         <div className={style.input_group}>

@@ -137,6 +137,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -145,21 +147,8 @@
   padding: 1px 8px;
   border-radius: 50px;
   font-size: 0.8em;
-}
-
-.card .card_talk .btn_group .btn_blue {
-  color: #fff;
-  background-color: #0067df;
-}
-
-.card .card_talk .btn_group .btn_yellow {
-  color: #000;
-  background-color: #ffc01e;
-}
-
-.card .card_talk .btn_group .btn_green {
-  color: #fff;
-  background-color: #009153;
+  text-align: center;
+  min-width: 40px;
 }
 
 @media screen and (max-width: 400px) {

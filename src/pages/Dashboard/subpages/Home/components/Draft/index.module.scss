@@ -108,6 +108,7 @@
     .btn_group {
       margin-top: 10px;
       display: flex;
+      flex-wrap: wrap;
       gap: 10px;
 
       .btn {
@@ -115,21 +116,8 @@
         padding: 1px 8px;
         border-radius: 50px;
         font-size: 0.8em;
-      }
-
-      .btn_blue {
-        color: #fff;
-        background-color: #0067df;
-      }
-
-      .btn_yellow {
-        color: #000;
-        background-color: #ffc01e;
-      }
-
-      .btn_green {
-        color: #fff;
-        background-color: #009153;
+        text-align: center;
+        min-width: 40px;
       }
     }
   }

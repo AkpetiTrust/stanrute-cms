@@ -17,6 +17,7 @@ function Editor({ course, setEditorShown }) {
   const [HTMLValue, setHTMLValue] = useState("");
   const [courseTitle, setCourseTitle] = useState("");
   const [courseCover, setCourseCover] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { apiUrl, token } = constants;
 
@@ -46,12 +47,14 @@ function Editor({ course, setEditorShown }) {
       title,
       content,
       img,
-      highlights,
-      objectives,
+      highlights: JSON.stringify(highlights),
+      objectives: JSON.stringify(objectives),
       published,
     });
 
     if (!content) return;
+
+    setLoading(true);
 
     fetch(`${apiUrl}/add-course`, {
       headers: {
@@ -134,7 +137,7 @@ function Editor({ course, setEditorShown }) {
 
           <button
             onClick={() => {
-              setObjectivesAreShown(true);
+              setObjectivesAreShown((prevValue) => !prevValue);
             }}
           >
             <svg
@@ -177,6 +180,7 @@ function Editor({ course, setEditorShown }) {
             editorState={editorState}
             setEditorState={setEditorState}
             setHTMLValue={setHTMLValue}
+            loading={loading}
           />
         )}
         <div className={style.btn_group}>

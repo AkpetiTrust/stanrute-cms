@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import style from "./index.module.css";
-import image from "./card-image.png";
+import fallBackImage from "./card-image.png";
 import rating from "./Rating.svg";
 import Options from "../Options/Options";
 import { Ellipsis } from "../../../../../../components";
 
-export default function PublishedCourse({ title, setEditorShown }) {
+export default function PublishedCourse({
+  publishedCourse: { title, image, highlights, _id },
+  setEditorShown,
+  setPublishedCourses,
+}) {
   const [optionsAreShown, setOptionsAreShown] = useState(false);
 
   return (
@@ -14,7 +18,7 @@ export default function PublishedCourse({ title, setEditorShown }) {
         Recent
       </button>
       <div className={style.card_image_container}>
-        <img src={image} alt="Stanrute Academy" />
+        <img src={image || fallBackImage} alt="Stanrute Academy" />
       </div>
       <div className={style.card_talk}>
         <div className={style.title_container}>
@@ -28,20 +32,28 @@ export default function PublishedCourse({ title, setEditorShown }) {
               setOptionsAreShown(false);
             }}
           >
-            {optionsAreShown && <Options setEditorShown={setEditorShown} />}
+            {optionsAreShown && (
+              <Options
+                setPublishedCourses={setPublishedCourses}
+                _id={_id}
+                setEditorShown={setEditorShown}
+              />
+            )}
             <Ellipsis />
           </div>
         </div>
         <img src={rating} alt="rating" />
         <p className={style.label}>Highlights:</p>
         <div className={style.btn_group}>
-          <button className={`${style.btn} ${style.btn_blue}`}>Concepts</button>
-          <button className={`${style.btn} ${style.btn_yellow}`}>
-            Strategies
-          </button>
-          <button className={`${style.btn} ${style.btn_green}`}>
-            Trade terms
-          </button>
+          {JSON.parse(highlights).map((highlight) => (
+            <button
+              key={highlight.text}
+              style={{ color: "#fff", backgroundColor: highlight.color.dark }}
+              className={`${style.btn}`}
+            >
+              {highlight.text}
+            </button>
+          ))}
         </div>
       </div>
     </div>

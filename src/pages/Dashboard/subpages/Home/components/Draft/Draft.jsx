@@ -1,15 +1,18 @@
 import React from "react";
 import style from "./index.module.css";
-import image from "./card-image.png";
+import fallBackImage from "./card-image.png";
 
-export default function Draft({ title, setEditorShown }) {
+export default function Draft({
+  draft: { title, image, highlights },
+  setEditorShown,
+}) {
   return (
     <div className={style.card}>
       <button className={`${style.btn} ${style.status}`} disabled>
         Recent
       </button>
       <div className={style.card_image_container}>
-        <img src={image} alt="Stanrute Academy" />
+        <img src={image || fallBackImage} alt="Stanrute Academy" />
       </div>
       <div className={style.card_talk}>
         <div className={style.title_container}>
@@ -47,7 +50,15 @@ export default function Draft({ title, setEditorShown }) {
         </div>
         <p className={style.label}>Highlights:</p>
         <div className={style.btn_group}>
-          <button className={`${style.btn} ${style.btn_blue}`}>Concepts</button>
+          {JSON.parse(highlights).map((highlight) => (
+            <button
+              key={highlight.text}
+              style={{ color: "#fff", backgroundColor: highlight.color.dark }}
+              className={`${style.btn}`}
+            >
+              {highlight.text}
+            </button>
+          ))}
         </div>
       </div>
     </div>

@@ -7,10 +7,8 @@
           align-items: center;
   gap: 10px;
   font-size: 0.9em;
-  color: #009153;
   padding: 2px 7px;
-  background-color: #e5fff4;
-  border: 1px solid #009153;
+  border: 1px solid;
   border-radius: 5px;
 }
 

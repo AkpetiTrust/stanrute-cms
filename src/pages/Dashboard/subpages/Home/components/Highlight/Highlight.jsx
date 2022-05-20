@@ -1,9 +1,12 @@
 import React from "react";
 import style from "./index.module.css";
 
-function Highlight({ text, setHighlights }) {
+function Highlight({ text, setHighlights, color: { light, dark } }) {
   return (
-    <div className={style.highlight}>
+    <div
+      className={style.highlight}
+      style={{ color: dark, borderColor: dark, backgroundColor: light }}
+    >
       {text}{" "}
       <svg
         width="15"
@@ -13,7 +16,7 @@ function Highlight({ text, setHighlights }) {
         xmlns="http://www.w3.org/2000/svg"
         onClick={() => {
           setHighlights((prevHighlights) =>
-            prevHighlights.filter((highlight) => highlight !== text)
+            prevHighlights.filter((highlight) => highlight.text !== text)
           );
         }}
       >

@@ -1,11 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./index.module.css";
 import { TabButton, PublishedCourses, Drafts, Editor } from "./components";
 import { CategoryBar } from "../../../../components";
+import { constants } from "../../../../constants";
 
 function Home() {
   const [activeTab, setActiveTab] = useState("Course posts");
   const [editorShown, setEditorShown] = useState(false);
+  const [publishedCourses, setPublishedCourses] = useState([]);
+  const [drafts, setDrafts] = useState([]);
+
+  const { apiUrl, token } = constants;
+
+  useEffect(() => {
+    fetch(`${apiUrl}/drafts`, {
+      headers: {
+        Authorization: `Bearer ${token()}`,
+      },
+    })
+      .then((res) => res.json())
+      .then(({ content }) => {
+        setDrafts(content);
+      });
+
+    fetch(`${apiUrl}/courses`)
+      .then((res) => res.json())
+      .then(({ content }) => {
+        setPublishedCourses(content);
+      });
+  }, [editorShown]);
 
   return (
     <section className={style.home}>
@@ -58,9 +81,13 @@ function Home() {
         />
       </div>
       {activeTab === "Course posts" ? (
-        <PublishedCourses setEditorShown={setEditorShown} />
+        <PublishedCourses
+          publishedCourses={publishedCourses}
+          setEditorShown={setEditorShown}
+          setPublishedCourses={setPublishedCourses}
+        />
       ) : (
-        <Drafts setEditorShown={setEditorShown} />
+        <Drafts drafts={drafts} setEditorShown={setEditorShown} />
       )}
       {editorShown && <Editor setEditorShown={setEditorShown} />}
     </section>

@@ -13,8 +13,14 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import storage from "../../../../../../utils/instances/firebase";
 import "draft-js/dist/Draft.css";
 import Image from "../Image/Image";
+import { Loading } from "../../../../../../components";
 
-function RichTextEditor({ editorState, setEditorState, setHTMLValue }) {
+function RichTextEditor({
+  editorState,
+  setEditorState,
+  setHTMLValue,
+  loading,
+}) {
   const [controls, _] = useState([
     {
       icon: (
@@ -313,19 +319,23 @@ function RichTextEditor({ editorState, setEditorState, setHTMLValue }) {
           Preview
         </p>
       </div>
-      <Editor
-        editorState={editorState}
-        handleKeyCommand={handleKeyCommand}
-        keyBindingFn={mapKeyToEditorCommand}
-        blockRendererFn={mediaBlockRenderer}
-        onChange={(state) => {
-          setEditorState(state);
-          setHTMLValue(stateToHTML(state.getCurrentContent()));
-        }}
-        placeholder="Write course..."
-        handlePastedFiles={handlePastedFiles}
-        handleDroppedFiles={handleDroppedFiles}
-      />
+      {loading ? (
+        <Loading height={"200px"} />
+      ) : (
+        <Editor
+          editorState={editorState}
+          handleKeyCommand={handleKeyCommand}
+          keyBindingFn={mapKeyToEditorCommand}
+          blockRendererFn={mediaBlockRenderer}
+          onChange={(state) => {
+            setEditorState(state);
+            setHTMLValue(stateToHTML(state.getCurrentContent()));
+          }}
+          placeholder="Write course..."
+          handlePastedFiles={handlePastedFiles}
+          handleDroppedFiles={handleDroppedFiles}
+        />
+      )}
     </div>
   );
 }
