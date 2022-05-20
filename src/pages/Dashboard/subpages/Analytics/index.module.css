@@ -1,0 +1,49 @@
+.analytics {
+  padding: 40px 30px;
+  margin-top: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.analytics .title {
+  font-weight: 700;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.analytics .inner {
+  padding: 0 15px;
+}
+
+.analytics .grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
+}
+
+.analytics .grid p.text {
+  color: #808080;
+  font-size: 0.8em;
+}
+
+.analytics .grid .subtitle {
+  font-size: 1.1em;
+  margin-bottom: 4px;
+  line-height: 1em;
+}
+
+.analytics .grid .subgrid {
+  margin-top: 40px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.analytics .course_stats .title {
+  font-size: 1.1em;
+}
+/*# sourceMappingURL=index.module.css.map */

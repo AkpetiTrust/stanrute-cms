@@ -1,0 +1,46 @@
+.analytics {
+  padding: 40px 30px;
+  margin-top: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+
+  .title {
+    font-weight: 700;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
+
+  .inner {
+    padding: 0 15px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px;
+
+    p.text {
+      color: #808080;
+      font-size: 0.8em;
+    }
+
+    .subtitle {
+      font-size: 1.1em;
+      margin-bottom: 4px;
+      line-height: 1em;
+    }
+
+    .subgrid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+    }
+  }
+
+  .course_stats {
+    .title {
+      font-size: 1.1em;
+    }
+  }
+}
