@@ -41,7 +41,7 @@ function SignUp() {
         if (!result.status) {
           return setEmailError(true);
         }
-        localStorage.setItem("user", JSON.stringify(result));
+        localStorage.setItem("user", JSON.stringify(result.user));
         navigate("/dashboard");
       });
   };

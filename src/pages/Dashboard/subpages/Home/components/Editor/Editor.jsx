@@ -2,28 +2,50 @@ import React, { useState } from "react";
 import style from "./index.module.css";
 import Highlights from "../Highlights/Highlights";
 import Objectives from "../Objectives/Objectives";
-import { EditorState } from "draft-js";
+import { EditorState, convertFromHTML, ContentState } from "draft-js";
 import RichTextEditor from "../RichTextEditor/RichTextEditor";
 import { constants } from "../../../../../../constants";
 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import storage from "../../../../../../utils/instances/firebase";
 
-function Editor({ course, setEditorShown }) {
-  const [highlights, setHighlights] = useState([]);
+function Editor({ course, setEditorShown, courseToShow }) {
+  const [highlights, setHighlights] = useState(
+    JSON.parse(courseToShow?.highlights || JSON.stringify([]))
+  );
   const [highlightsAreShown, setHighlightsAreShown] = useState(false);
-  const [objectives, setObjectives] = useState([]);
+  const [objectives, setObjectives] = useState(
+    JSON.parse(courseToShow?.objectives || JSON.stringify([]))
+  );
   const [objectivesAreShown, setObjectivesAreShown] = useState(false);
-  const [HTMLValue, setHTMLValue] = useState("");
-  const [courseTitle, setCourseTitle] = useState("");
-  const [courseCover, setCourseCover] = useState("");
+  const [HTMLValue, setHTMLValue] = useState(courseToShow?.HTMLValue || "");
+  const [courseTitle, setCourseTitle] = useState(courseToShow?.title || "");
+  const [courseCover, setCourseCover] = useState(courseToShow?.image || "");
   const [loading, setLoading] = useState(false);
 
   const { apiUrl, token } = constants;
 
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
+  const previewProps = {
+    HTMLValue,
+    courseTitle,
+    courseCover,
+    objectives,
+  };
+
+  const [editorState, setEditorState] = useState(() => {
+    if (courseToShow) {
+      console.log(courseToShow.HTMLValue);
+      const blocksFromHTML = convertFromHTML(courseToShow.HTMLValue);
+      const content = ContentState.createFromBlockArray(
+        blocksFromHTML.contentBlocks,
+        blocksFromHTML.entityMap
+      );
+
+      return EditorState.createWithContent(content);
+    }
+
+    return EditorState.createEmpty();
+  });
 
   const handleChange = (e) => {
     setLoading(true);
@@ -52,13 +74,18 @@ function Editor({ course, setEditorShown }) {
       highlights: JSON.stringify(highlights),
       objectives: JSON.stringify(objectives),
       published,
+      id: courseToShow?._id,
     });
 
     if (!content) return;
 
     setLoading(true);
 
-    fetch(`${apiUrl}/add-course`, {
+    let endpoint = courseToShow
+      ? `${apiUrl}/edit-course`
+      : `${apiUrl}/add-course`;
+
+    fetch(endpoint, {
       headers: {
         Authorization: `Bearer ${token()}`,
         Accept: "application/json",
@@ -184,6 +211,7 @@ function Editor({ course, setEditorShown }) {
             setHTMLValue={setHTMLValue}
             loading={loading}
             setLoading={setLoading}
+            previewProps={previewProps}
           />
         )}
         <div className={style.btn_group}>

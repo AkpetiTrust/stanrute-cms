@@ -34,7 +34,7 @@ function SignIn() {
         if (!result.status) {
           return setSignInError(true);
         }
-        localStorage.setItem("user", JSON.stringify(result));
+        localStorage.setItem("user", JSON.stringify(result.user));
         navigate("/dashboard");
       });
   };

@@ -15,14 +15,35 @@
     justify-content: space-between;
     border-radius: 5px;
 
+    &.preview_shown {
+      p {
+        &.preview {
+          color: #fff;
+
+          svg path {
+            fill: #fff;
+          }
+        }
+        &.write {
+          color: #66ffbe;
+
+          svg path {
+            fill: #66ffbe;
+          }
+        }
+      }
+    }
+
     p {
       display: flex;
       align-items: center;
       &.preview {
         color: #66ffbe;
+        cursor: pointer;
       }
       &.write {
         width: 30%;
+        cursor: pointer;
       }
       svg {
         width: 20px;

@@ -6,6 +6,7 @@ function PublishedCourses({
   setEditorShown,
   publishedCourses,
   setPublishedCourses,
+  setCourseToShow,
 }) {
   return (
     <section className={style.grid}>
@@ -15,6 +16,7 @@ function PublishedCourses({
           publishedCourse={publishedCourse}
           setEditorShown={setEditorShown}
           setPublishedCourses={setPublishedCourses}
+          setCourseToShow={setCourseToShow}
         />
       ))}
     </section>

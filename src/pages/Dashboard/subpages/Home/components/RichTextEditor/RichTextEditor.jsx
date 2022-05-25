@@ -14,11 +14,13 @@ import storage from "../../../../../../utils/instances/firebase";
 import "draft-js/dist/Draft.css";
 import Image from "../Image/Image";
 import { Loading } from "../../../../../../components";
+import Preview from "../Preview/Preview";
 
 function RichTextEditor({
   editorState,
   setEditorState,
   setHTMLValue,
+  previewProps: { HTMLValue, courseTitle, courseCover, objectives },
   loading,
   setLoading,
 }) {
@@ -176,6 +178,7 @@ function RichTextEditor({
   ]);
 
   const [placeholderIsHidden, setPlaceholderIsHidden] = useState(false);
+  const [previewShow, setPreviewShow] = useState(false);
 
   useEffect(() => {
     let contentState = editorState.getCurrentContent();
@@ -280,8 +283,15 @@ function RichTextEditor({
         placeholderIsHidden ? style.no_placeholder : ""
       }`}
     >
-      <div className={style.toolbar}>
-        <p className={style.write}>
+      <div
+        className={`${style.toolbar} ${previewShow ? style.preview_shown : ""}`}
+      >
+        <p
+          className={style.write}
+          onClick={() => {
+            setPreviewShow(false);
+          }}
+        >
           <svg
             width="28"
             height="25"
@@ -307,7 +317,12 @@ function RichTextEditor({
             />
           ))}
         </div>
-        <p className={style.preview}>
+        <p
+          className={style.preview}
+          onClick={() => {
+            setPreviewShow(true);
+          }}
+        >
           <svg
             width="23"
             height="25"
@@ -325,6 +340,10 @@ function RichTextEditor({
       </div>
       {loading ? (
         <Loading height={"200px"} />
+      ) : previewShow ? (
+        <Preview
+          previewProps={{ HTMLValue, courseTitle, courseCover, objectives }}
+        />
       ) : (
         <Editor
           editorState={editorState}

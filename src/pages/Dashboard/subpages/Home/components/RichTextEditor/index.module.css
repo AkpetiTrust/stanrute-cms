@@ -22,6 +22,22 @@
   border-radius: 5px;
 }
 
+.editor .toolbar.preview_shown p.preview {
+  color: #fff;
+}
+
+.editor .toolbar.preview_shown p.preview svg path {
+  fill: #fff;
+}
+
+.editor .toolbar.preview_shown p.write {
+  color: #66ffbe;
+}
+
+.editor .toolbar.preview_shown p.write svg path {
+  fill: #66ffbe;
+}
+
 .editor .toolbar p {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -33,10 +49,12 @@
 
 .editor .toolbar p.preview {
   color: #66ffbe;
+  cursor: pointer;
 }
 
 .editor .toolbar p.write {
   width: 30%;
+  cursor: pointer;
 }
 
 .editor .toolbar p svg {

@@ -2,10 +2,9 @@ import React from "react";
 import style from "./index.module.css";
 import fallBackImage from "./card-image.png";
 
-export default function Draft({
-  draft: { title, image, highlights },
-  setEditorShown,
-}) {
+export default function Draft({ draft, setEditorShown, setCourseToShow }) {
+  const { title, image, highlights } = draft;
+
   return (
     <div className={style.card}>
       <button className={`${style.btn} ${style.status}`} disabled>
@@ -19,6 +18,11 @@ export default function Draft({
           <p className="text-primary">{title}</p>
           <button
             onClick={() => {
+              let HTMLValue = "";
+              draft.sections.forEach((section) => {
+                HTMLValue += `<h1>${section.title}</h1>${section.content}`;
+              });
+              setCourseToShow({ ...draft, HTMLValue });
               setEditorShown(true);
             }}
           >

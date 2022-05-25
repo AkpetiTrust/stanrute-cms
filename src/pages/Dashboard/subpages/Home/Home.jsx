@@ -9,6 +9,7 @@ function Home() {
   const [editorShown, setEditorShown] = useState(false);
   const [publishedCourses, setPublishedCourses] = useState([]);
   const [drafts, setDrafts] = useState([]);
+  const [courseToShow, setCourseToShow] = useState();
 
   const { apiUrl, token } = constants;
 
@@ -35,6 +36,7 @@ function Home() {
       <CategoryBar
         showButton
         onClick={() => {
+          setCourseToShow(undefined);
           setEditorShown(true);
         }}
       />
@@ -85,11 +87,22 @@ function Home() {
           publishedCourses={publishedCourses}
           setEditorShown={setEditorShown}
           setPublishedCourses={setPublishedCourses}
+          setCourseToShow={setCourseToShow}
         />
       ) : (
-        <Drafts drafts={drafts} setEditorShown={setEditorShown} />
+        <Drafts
+          setCourseToShow={setCourseToShow}
+          drafts={drafts}
+          setEditorShown={setEditorShown}
+        />
       )}
-      {editorShown && <Editor setEditorShown={setEditorShown} />}
+      {editorShown && (
+        <Editor
+          key={courseToShow?.title}
+          courseToShow={courseToShow}
+          setEditorShown={setEditorShown}
+        />
+      )}
     </section>
   );
 }

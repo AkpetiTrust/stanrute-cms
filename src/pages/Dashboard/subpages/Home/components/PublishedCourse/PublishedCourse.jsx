@@ -6,11 +6,13 @@ import Options from "../Options/Options";
 import { Ellipsis } from "../../../../../../components";
 
 export default function PublishedCourse({
-  publishedCourse: { title, image, highlights, _id },
+  publishedCourse,
   setEditorShown,
   setPublishedCourses,
+  setCourseToShow,
 }) {
   const [optionsAreShown, setOptionsAreShown] = useState(false);
+  const { title, image, highlights, _id } = publishedCourse;
 
   return (
     <div className={style.card}>
@@ -37,6 +39,8 @@ export default function PublishedCourse({
                 setPublishedCourses={setPublishedCourses}
                 _id={_id}
                 setEditorShown={setEditorShown}
+                course={publishedCourse}
+                setCourseToShow={setCourseToShow}
               />
             )}
             <Ellipsis />

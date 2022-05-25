@@ -2,13 +2,24 @@ import React from "react";
 import style from "./index.module.css";
 import { constants } from "../../../../../../constants";
 
-function Options({ setEditorShown, setPublishedCourses, _id }) {
+function Options({
+  setEditorShown,
+  setPublishedCourses,
+  _id,
+  setCourseToShow,
+  course,
+}) {
   const { apiUrl, token } = constants;
 
   return (
     <div className={style.options}>
       <p
         onClick={() => {
+          let HTMLValue = "";
+          course.sections.forEach((section) => {
+            HTMLValue += `<h1>${section.title}</h1>${section.content}`;
+          });
+          setCourseToShow({ ...course, HTMLValue });
           setEditorShown(true);
         }}
       >
