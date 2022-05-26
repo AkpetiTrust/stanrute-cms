@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e7c20e4b.css",
+    "main.js": "/static/js/main.e2be1820.js",
+    "static/media/card-image.png": "/static/media/card-image.c2a44f0edbce93cb188b.png",
+    "static/media/Stanrute.png": "/static/media/Stanrute.faa0debcdfe6438b1c42.png",
+    "static/media/Rating.svg": "/static/media/Rating.807fb6e6a1a8c95c6b1f692bb12d4ef7.svg",
+    "index.html": "/index.html",
+    "main.e7c20e4b.css.map": "/static/css/main.e7c20e4b.css.map",
+    "main.e2be1820.js.map": "/static/js/main.e2be1820.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e7c20e4b.css",
+    "static/js/main.e2be1820.js"
+  ]
+}
