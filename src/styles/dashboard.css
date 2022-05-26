@@ -6,4 +6,10 @@
 .dashboard-inner {
   padding: 60px 80px;
 }
+
+@media screen and (max-width: 1110px) {
+  .dashboard {
+    display: none;
+  }
+}
 /*# sourceMappingURL=dashboard.css.map */

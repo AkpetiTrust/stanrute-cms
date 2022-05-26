@@ -34,7 +34,6 @@ function Editor({ course, setEditorShown, courseToShow }) {
 
   const [editorState, setEditorState] = useState(() => {
     if (courseToShow) {
-      console.log(courseToShow.HTMLValue);
       const blocksFromHTML = convertFromHTML(courseToShow.HTMLValue);
       const content = ContentState.createFromBlockArray(
         blocksFromHTML.contentBlocks,

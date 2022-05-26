@@ -1,0 +1,35 @@
+.mobile {
+  display: none;
+  height: 100vh;
+  padding: 20px;
+
+  .inner {
+    padding-top: 40%;
+  }
+
+  figure {
+    width: 180px;
+    margin: 0 auto;
+    margin-bottom: -25px;
+    img {
+      max-width: 100%;
+    }
+  }
+  p {
+    width: fit-content;
+    text-align: center;
+    font-size: 14px;
+    margin: 0 auto;
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: #e5fff4;
+    color: #009153;
+    border: 1px solid #009153;
+  }
+}
+
+@media screen and(max-width:1110px) {
+  .mobile {
+    display: block;
+  }
+}

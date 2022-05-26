@@ -6,7 +6,7 @@ function Preview({
 }) {
   return (
     <div className={style.preview}>
-      <img src={courseCover} alt="cover" />
+      {courseCover && <img src={courseCover} alt="cover" />}
       <h1 className={style.title}>{courseTitle}</h1>
       <div
         className={style.content}

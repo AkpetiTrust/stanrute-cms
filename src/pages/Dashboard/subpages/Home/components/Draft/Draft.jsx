@@ -22,6 +22,7 @@ export default function Draft({ draft, setEditorShown, setCourseToShow }) {
               draft.sections.forEach((section) => {
                 HTMLValue += `<h1>${section.title}</h1>${section.content}`;
               });
+              HTMLValue = HTMLValue.replaceAll("\n", "<br />");
               setCourseToShow({ ...draft, HTMLValue });
               setEditorShown(true);
             }}

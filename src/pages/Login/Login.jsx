@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "../../styles/login.css";
-import { Header } from "../../components";
+import { Header, MobileFallback } from "../../components";
 import { Intro, Main } from "./components";
 import { useNavigate } from "react-router-dom";
 
@@ -14,11 +14,14 @@ function Login() {
   });
 
   return (
-    <div className="login">
-      <Header />
-      <Intro />
-      <Main />
-    </div>
+    <>
+      <div className="login">
+        <Header />
+        <Intro />
+        <Main />
+      </div>
+      <MobileFallback />
+    </>
   );
 }
 

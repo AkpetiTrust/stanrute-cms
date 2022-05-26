@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Header } from "../../components";
+import { Header, MobileFallback } from "../../components";
 import { Intro, Nav } from "./components";
 import { useParams } from "react-router-dom";
 import { Certification, Notification, Home, Analytics } from "./subpages";
@@ -26,14 +26,17 @@ function DashBoard() {
   const Component = () => components[section] || <div></div>;
 
   return (
-    <div className="dashboard">
-      <Header />
-      <div className="dashboard-inner">
-        <Intro />
-        <Nav section={section} />
-        <Component />
+    <>
+      <div className="dashboard">
+        <Header />
+        <div className="dashboard-inner">
+          <Intro />
+          <Nav section={section} />
+          <Component />
+        </div>
       </div>
-    </div>
+      <MobileFallback />
+    </>
   );
 }
 

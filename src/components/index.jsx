@@ -3,5 +3,6 @@ import Input from "./Input/Input";
 import Ellipsis from "./Ellipsis/Ellipsis";
 import CategoryBar from "./CategoryBar/CategoryBar";
 import Loading from "./Loading/Loading";
+import MobileFallback from "./MobileFallback/MobileFallback";
 
-export { Header, Input, Ellipsis, CategoryBar, Loading };
+export { Header, Input, Ellipsis, CategoryBar, Loading, MobileFallback };

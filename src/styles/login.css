@@ -3,4 +3,10 @@
   min-height: 100vh;
   padding-bottom: 150px;
 }
+
+@media screen and (max-width: 1110px) {
+  .login {
+    display: none;
+  }
+}
 /*# sourceMappingURL=login.css.map */

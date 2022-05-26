@@ -19,6 +19,7 @@ function Options({
           course.sections.forEach((section) => {
             HTMLValue += `<h1>${section.title}</h1>${section.content}`;
           });
+          HTMLValue = HTMLValue.replaceAll("\n", "<br />");
           setCourseToShow({ ...course, HTMLValue });
           setEditorShown(true);
         }}
