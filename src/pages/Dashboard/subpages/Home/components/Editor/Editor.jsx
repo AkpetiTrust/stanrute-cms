@@ -80,9 +80,7 @@ function Editor({ course, setEditorShown, courseToShow }) {
 
     setLoading(true);
 
-    let endpoint = courseToShow
-      ? `${apiUrl}/edit-course`
-      : `${apiUrl}/add-course`;
+    let endpoint = courseToShow ? `${apiUrl}/edit` : `${apiUrl}/add-course`;
 
     fetch(endpoint, {
       headers: {

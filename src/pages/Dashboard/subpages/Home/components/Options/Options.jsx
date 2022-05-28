@@ -33,10 +33,12 @@ function Options({
             prevCourses.filter((course) => course._id !== _id)
           );
 
-          let body = JSON.stringify({ course_id: _id });
+          let body = JSON.stringify({ id: _id });
           fetch(`${apiUrl}/delete-course`, {
             headers: {
               Authorization: `Bearer ${token()}`,
+              Accept: "application/json",
+              "Content-Type": "application/json",
             },
             method: "POST",
             body,
