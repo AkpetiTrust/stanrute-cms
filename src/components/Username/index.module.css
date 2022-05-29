@@ -1,0 +1,9 @@
+.username_container {
+  position: relative;
+  cursor: pointer;
+}
+
+.username_container .username {
+  color: #808080;
+}
+/*# sourceMappingURL=index.module.css.map */

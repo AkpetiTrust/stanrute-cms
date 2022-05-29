@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { CategoryBar } from "../../../../components";
 import { FileInput, LinkInput } from "./components";
 import style from "./index.module.css";
 
@@ -11,6 +12,7 @@ function Certificate() {
 
   return (
     <div>
+      <CategoryBar />
       <div className={style.inner}>
         <FileInput onClick={onClick} />
         {linkInputIsShown && <LinkInput />}
