@@ -3,6 +3,7 @@ import { RichUtils, EditorState, AtomicBlockUtils } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import storage from "../../../../../../utils/instances/firebase";
+import { onAddLink } from "../EditorLink/EditorLink";
 
 function ControlButton({
   control: { icon, isBlock, style },
@@ -11,6 +12,10 @@ function ControlButton({
   setHTMLValue,
 }) {
   const handleClick = () => {
+    if (style === "LINK") {
+      return onAddLink(editorState, setEditorState);
+    }
+
     if (isBlock) {
       const newEditorState = RichUtils.toggleBlockType(editorState, style);
       setHTMLValue(stateToHTML(newEditorState.getCurrentContent()));
