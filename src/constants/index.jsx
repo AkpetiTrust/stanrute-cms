@@ -1,5 +1,5 @@
 const constants = {
-  apiUrl: "http://localhost:4000",
+  apiUrl: "https://stanrute-cms.herokuapp.com",
   token: function () {
     return JSON.parse(localStorage.getItem("user"))?.token;
   },

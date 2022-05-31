@@ -9,6 +9,8 @@ import { constants } from "../../../../../../constants";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import storage from "../../../../../../utils/instances/firebase";
 
+import { createLinkDecorator } from "../EditorLink/EditorLink";
+
 function Editor({ course, setEditorShown, courseToShow }) {
   const [highlights, setHighlights] = useState(
     JSON.parse(courseToShow?.highlights || JSON.stringify([]))
@@ -25,6 +27,8 @@ function Editor({ course, setEditorShown, courseToShow }) {
 
   const { apiUrl, token } = constants;
 
+  const decorator = createLinkDecorator();
+
   const previewProps = {
     HTMLValue,
     courseTitle,
@@ -40,7 +44,7 @@ function Editor({ course, setEditorShown, courseToShow }) {
         blocksFromHTML.entityMap
       );
 
-      return EditorState.createWithContent(content);
+      return EditorState.createWithContent(content, decorator);
     }
 
     return EditorState.createEmpty();
